@@ -1,63 +1,52 @@
+/* --- Base Styles --- */
+
+/* Removed display, flex-direction, and overflow from :root to avoid forced scrolling or layout issues */
 :root {
     --primary-color: #A3CDE3;
     --background-color: #F2EEE9;
     --font-color: #000;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow: scroll;
 }
 
 body {
+    margin: 0;
     min-height: 100vh;
     font-family: "Roboto", serif;
     font-size: 14px;
     font-weight: 300;
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
     background-color: var(--background-color);
     color: var(--font-color);
-    overflow: hidden;
+    /* Removed overflow: hidden to allow scrolling on small screens */
+    /* Using a flexible layout while allowing the browser to handle wrapping naturally */
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    gap: 16px;
+    box-sizing: border-box;
 }
 
+/* Header */
 header {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
     width: 100%;
     padding: 40px 16px 8px;
-    flex-direction: column;
     box-sizing: border-box;
     gap: 16px;
-}
-
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    padding: 0px;
-    margin: 0px;
 }
 
 .header-top,
 .header-bottom {
-    padding: 0px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
+/* Moves nav links in a row on bigger screens */
 .header-bottom {
-    padding: 0px;
-    display: flex;
     justify-content: space-between;
-    align-items: center;
     font-size: 18px;
-    width: 100%;
-    box-sizing: border-box;
 }
 
 .logo {
@@ -65,6 +54,19 @@ h6 {
     font-weight: 400;
     font-style: normal;
     font-size: 35px;
+    margin: 0;
+}
+
+/* Typography */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    padding: 0;
+    margin: 0;
 }
 
 .libre-heading {
@@ -73,7 +75,6 @@ h6 {
     font-optical-sizing: auto;
     font-weight: 700;
     font-style: normal;
-    width: fit-content;
 }
 
 .hero-text {
@@ -95,6 +96,7 @@ h6 {
     height: auto;
 }
 
+/* Tagline Section */
 .tag-line {
     width: 100%;
     box-sizing: border-box;
@@ -102,29 +104,19 @@ h6 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 16px 0px;
+    padding: 16px 0;
 }
 
 .text-center {
     text-align: center;
 }
 
-.icon-container {
-    background-color: var(--primary-color);
-    border-radius: 9999px;
-    width: fit-content;
-    padding: 8px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
+/* USP Section */
 .usp {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    padding: 0px 16px;
+    padding: 0 16px;
     width: 100%;
     box-sizing: border-box;
 }
@@ -136,6 +128,17 @@ h6 {
     align-items: center;
 }
 
+.icon-container {
+    background-color: var(--primary-color);
+    border-radius: 9999px;
+    width: fit-content;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Story Section */
 .story {
     display: flex;
     flex-direction: column;
@@ -154,6 +157,7 @@ h6 {
     text-align: left;
 }
 
+/* Footer */
 footer {
     display: flex;
     background-color: var(--primary-color);
@@ -164,4 +168,46 @@ footer {
     padding: 32px 16px;
     width: 100%;
     box-sizing: border-box;
+}
+
+/* --- Responsive Media Queries --- */
+
+/* For tablets and up to small desktops */
+@media (max-width: 768px) {
+    header {
+        padding: 20px 16px 8px;
+    }
+
+    .header-bottom {
+        /* Stack nav links vertically on smaller screens */
+        gap: 8px;
+        text-align: center;
+    }
+
+    .header-bottom p.nav-link {
+        margin: 4px 0;
+    }
+
+    .libre-heading {
+        font-size: 22px;
+    }
+
+    .logo {
+        font-size: 28px;
+    }
+}
+
+/* For very small mobile devices */
+@media (max-width: 480px) {
+    .libre-heading {
+        font-size: 20px;
+    }
+
+    .logo {
+        font-size: 24px;
+    }
+
+    .header-bottom {
+        font-size: 16px;
+    }
 }
